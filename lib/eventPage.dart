@@ -49,7 +49,6 @@ class _EventPageState extends State<EventPage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            //Navigator.pop(context);
                             Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(builder: (context) {
                                   return HomePage();

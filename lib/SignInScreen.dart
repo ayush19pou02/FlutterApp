@@ -30,18 +30,6 @@ class _SignInScreenState extends State<SignInScreen> {
         width: double.infinity,
         height: double.infinity,
         color: Color(0xc58cef),
-    //     decoration: BoxDecoration(
-    //     gradient: LinearGradient(
-    //     colors: [
-    //     Colors.blue,
-    //     Colors.red,
-    //     ],
-    // ),
-    // ),
-    // child: Card(
-    // margin: EdgeInsets.only(top: 150, bottom: 260, left: 50, right: 50),
-    // elevation: 20,
-    // color: Colors.cyan,
     child: Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [

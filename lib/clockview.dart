@@ -51,10 +51,6 @@ class _ClockViewState extends State<ClockView> {
 class ClockPainter extends CustomPainter {
   var dateTime = DateTime.now();
 
-  //60sec - 360, 1 sec - 6degrees
-  //60min - 360, 1 min - 6degrees
-  //12hours - 360, 1 hour - 30degrees, 60min - 30degrees, 1 min - 0.5degrees
-
   @override
   void paint(Canvas canvas, Size size) {
     var centerX = size.width / 2;

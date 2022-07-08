@@ -34,23 +34,8 @@ class _HomePageState1 extends State<HomePage1> {
               builder: (BuildContext context, MenuInfo value, Widget? child) {
                 if (value.menuType == MenuType.clock)
                   return ClockPage();
-                if (value.menuType == MenuType.alarm)
-                  return AlarmPage();
                 else
-                  return Container(
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(fontSize: 20),
-                        children: <TextSpan>[
-                          TextSpan(text: 'Upcoming Tutorial\n'),
-                          TextSpan(
-                            text: value.title,
-                            style: TextStyle(fontSize: 48),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
+                  return AlarmPage();
               },
             ),
           ),

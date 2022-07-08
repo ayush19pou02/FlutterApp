@@ -22,12 +22,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  //signout function
-  // signOut() async {
-  //   await auth.signOut();
-  //   Navigator.pushReplacement(
-  //       context, MaterialPageRoute(builder: (context) => SignInScreen()));
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,13 +32,6 @@ class _HomePageState extends State<HomePage> {
         // appbar text
         title: Text("Productivity Hacker"),
         ),
-      //   floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     signOut();
-      //   },
-      //   child: Icon(Icons.logout_rounded),
-      //   backgroundColor: Colors.green,
-      // ),
         // In body text containing 'Home page ' in center
         drawer: Drawer(
           child: ListView(
@@ -90,24 +77,6 @@ class _HomePageState extends State<HomePage> {
                 ],
                ),
               ),
-              // ListTile(
-              //   leading: Icon(
-              //     Icons.home,
-              //   ),
-              //   title: const Text('Page 1'),
-              //   onTap: () {
-              //     Navigator.pop(context);
-              //   },
-              // ),
-              // ListTile(
-              //   leading: Icon(
-              //     Icons.train,
-              //   ),
-              //   title: const Text('Page 2'),
-              //   onTap: () {
-              //     Navigator.pop(context);
-              //   },
-              // ),
               ListTile(
                   leading: Icon(
                     Icons.exit_to_app,
@@ -156,20 +125,6 @@ class _HomePageState extends State<HomePage> {
                 TaskCardWidget(
                   title: "Get Started!",
                   desc: "Hello! $name",),
-                // Expanded(
-                //   child: ListView(
-                //     children: [
-                //       TaskCardWidget(
-                //         title: "Get Started!",
-                //         desc: "Hello! $name",
-                //       ),
-                //       // TaskCardWidget(),
-                //       // TaskCardWidget(),
-                //       // TaskCardWidget(),
-                //       // TaskCardWidget(),
-                //     ],
-                //   ),
-                // ),
                 Padding(
                   padding: EdgeInsets.only(
                     top: 50.0,
@@ -225,37 +180,6 @@ class _HomePageState extends State<HomePage> {
 
               ],
             ),
-
-            // Positioned(
-            //   bottom: 24.0,
-            //   right: 0.0,
-            //   child: GestureDetector(
-            //     onTap: () {
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(
-            //             builder: (context) => Taskpage(
-            //                 task:null ,
-            //             )),
-            //       ).then((value) {
-            //         setState(() {});
-            //       });
-            //     },
-            //     child: Container(
-            //       width: 60.0,
-            //       height: 60.0,
-            //       decoration: BoxDecoration(
-            //         color: Color(0xFF7349FE), //Color(0xFF643FDB),
-            //         borderRadius: BorderRadius.circular(20.0),
-            //       ),
-            //       child: Image(
-            //         image: AssetImage(
-            //           "assets/add_icon.png",
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
             ],
               ),
         ),

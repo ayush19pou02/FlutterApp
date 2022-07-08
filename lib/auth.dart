@@ -11,8 +11,6 @@ String? email;
 String? imageUrl;
 Future<void> signup(BuildContext context) async {
 
-  //await googleSignIn.disconnect();
-  //await auth.signOut();
   final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
   if (googleSignInAccount != null) {
     final GoogleSignInAuthentication googleSignInAuthentication =

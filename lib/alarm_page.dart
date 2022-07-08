@@ -1,18 +1,13 @@
 import 'package:login_page/homepage.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:flutter_alarm_clock/flutter_alarm_clock.dart';
 import './alarm_helper.dart';
 import 'theme_data.dart';
-// import './data.dart';
 import './alarm_info.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 
 import 'main.dart';
 AlarmHelper _alarmHelper = AlarmHelper();
-var _id=_alarmHelper.getCount();
 class AlarmPage extends StatefulWidget {
   @override
   _AlarmPageState createState() => _AlarmPageState();
@@ -21,7 +16,6 @@ class AlarmPage extends StatefulWidget {
 class _AlarmPageState extends State<AlarmPage> {
   DateTime? _alarmTime;
   String? _alarmTimeString;
-  //int id=0;
   Future<List<AlarmInfo>>? _alarms;
   List<AlarmInfo>? _currentAlarms;
 
@@ -80,7 +74,6 @@ class _AlarmPageState extends State<AlarmPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   _currentAlarms = snapshot.data!;
-                  //print(_currentAlarms);
                   return ListView(
                     children: snapshot.data!.map<Widget>((alarm) {
                       var alarmTime =
@@ -129,18 +122,8 @@ class _AlarmPageState extends State<AlarmPage> {
                                     ),
                                   ],
                                 ),
-                                // Switch(
-                                //   onChanged: (bool value) {},
-                                //   value: true,
-                                //   activeColor: Colors.white,
-                                // ),
                               ],
                             ),
-                            // Text(
-                            //   'Mon-Fri',
-                            //   style: TextStyle(
-                            //       color: Colors.white, fontFamily: 'avenir'),
-                            // ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
@@ -169,19 +152,7 @@ class _AlarmPageState extends State<AlarmPage> {
                       );
                     }).followedBy([
                       if (_currentAlarms!.length < 5)
-
-                          // strokeWidth: 2,
-                          // color: CustomColors.clockOutline,
-                          // borderType: BorderType.RRect,
-                          // radius: Radius.circular(24),
-                          // dashPattern: [5, 4],
                            Container(
-                            // width: double.infinity,
-                            // decoration: BoxDecoration(
-                            //   color: CustomColors.clockBG,
-                            //   borderRadius:
-                            //       BorderRadius.all(Radius.circular(24)),
-                            // ),
                             child: FlatButton(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 32, vertical: 16),
@@ -189,14 +160,7 @@ class _AlarmPageState extends State<AlarmPage> {
                                 _alarmTimeString =
                                     DateFormat('HH:mm').format(DateTime.now());
                                 showModalBottomSheet<dynamic>(
-                                  // useRootNavigator: true,
                                   context: context,
-                                  // clipBehavior: Clip.antiAlias,
-                                  // shape: RoundedRectangleBorder(
-                                  //   borderRadius: BorderRadius.vertical(
-                                  //     top: Radius.circular(24),
-                                  //   ),
-                                  // ),
                                   builder: (BuildContext bc) {
                                     return StatefulBuilder(
                                       builder: (context, setModalState) {
@@ -240,21 +204,6 @@ class _AlarmPageState extends State<AlarmPage> {
                                                       TextStyle(fontSize: 32),
                                                 ),
                                               ),
-                                              // ListTile(
-                                              //   title: Text('Repeat'),
-                                              //   trailing: Icon(
-                                              //       Icons.arrow_forward_ios),
-                                              // ),
-                                              // ListTile(
-                                              //   title: Text('Sound'),
-                                              //   trailing: Icon(
-                                              //       Icons.arrow_forward_ios),
-                                              // ),
-                                              // ListTile(
-                                              //   title: Text('Title'),
-                                              //   trailing: Icon(
-                                              //       Icons.arrow_forward_ios),
-                                              // ),
                                               FloatingActionButton.extended(
                                                 onPressed: onSaveAlarm,
                                                 icon: Icon(Icons.alarm),
@@ -313,43 +262,10 @@ class _AlarmPageState extends State<AlarmPage> {
       ),
     );
   }
-  // Future<int> getCount() async {
-  //   //database connection
-  //   var db = await this.database;
-  //   var x = await db.rawQuery('SELECT COUNT (*) from
-  //       $tableAlarm');
-  //       int count = Sqflite.firstIntValue(x);
-  //   return count;
-  // }
 
-
-  void scheduleAlarm(
-      DateTime scheduledNotificationDateTime, AlarmInfo alarmInfo) async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'alarm_notify',
-      'Channel for Alarm notification',
-      icon: 'codex_logo',
-      sound: RawResourceAndroidNotificationSound('a_long_cold_sting'),
-      largeIcon: DrawableResourceAndroidBitmap('codex_logo'),
-    );
-
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails(
-        sound: 'a_long_cold_sting.wav',
-        presentAlert: true,
-        presentBadge: true,
-        presentSound: true);
-    var platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
-
-    await flutterLocalNotificationsPlugin.schedule(0, 'Office', alarmInfo.title,
-        scheduledNotificationDateTime, platformChannelSpecifics);
-  }
 
   void onSaveAlarm() async{
     DateTime scheduleAlarmDateTime;
-    // if (_alarmTime!.isAfter(DateTime.now()))
-    //   scheduleAlarmDateTime = _alarmTime!;
-    // else
       scheduleAlarmDateTime = _alarmTime!.add(Duration(days: 1));
       var h = scheduleAlarmDateTime.hour;
       var m = scheduleAlarmDateTime.minute;
@@ -359,20 +275,10 @@ class _AlarmPageState extends State<AlarmPage> {
       title: 'alarm',
 
     );
-
-    // _id=await _id+1 as Future<int>;
     _alarmHelper.insertAlarm(alarmInfo);
-    scheduleAlarm(scheduleAlarmDateTime, alarmInfo);
     FlutterAlarmClock.createAlarm(h,m);
     Navigator.pop(context);
 
     loadAlarms();
   }
-
-  // void deleteAlarm(int id) async{
-  //
-  //     await _alarmHelper.delete(id);
-  //   //unsubscribe for notification
-  //   loadAlarms();
-  // }
 }

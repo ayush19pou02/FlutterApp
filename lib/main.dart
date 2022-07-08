@@ -2,35 +2,16 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 // main.dart file
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:login_page/homepage.dart';
 import 'package:splashscreen/splashscreen.dart';
 import 'SignInScreen.dart';
 import 'auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 var c=0;
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var initializationSettingsAndroid = new
-  AndroidInitializationSettings('codex_logo');
-  var initializationSettingsIOS = IOSInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {});
 
-
-  var initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid);
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onSelectNotification: (String? payload) async {
-        if (payload != null) {
-          debugPrint('notification payload: ' + payload);
-        }
-      });
 // initializing the firebase app
   await Firebase.initializeApp();
 
