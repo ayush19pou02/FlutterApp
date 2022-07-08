@@ -28,9 +28,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
         backgroundColor: Colors.blueGrey,
         centerTitle: true,
-
         // appbar text
-        title: Text("Productivity Hacker"),
+        title: Text('Home')
         ),
         // In body text containing 'Home page ' in center
         drawer: Drawer(

@@ -38,9 +38,9 @@ class _SignInScreenState extends State<SignInScreen> {
     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
     ),
     Padding(
-    padding: const EdgeInsets.fromLTRB(75, 50, 75, 20),
+    padding: const EdgeInsets.fromLTRB(85, 30, 75, 20),
     child: MaterialButton(
-    color: Colors.white24,
+    color: Colors.cyan,
     elevation: 10,
     child: Row(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -60,7 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
     width: 40,
       child: DecoratedBox(
           decoration: BoxDecoration(
-            color: Colors.white12
+            color: Colors.white
           )),
     ),
     Text("Sign In with Google" ,
